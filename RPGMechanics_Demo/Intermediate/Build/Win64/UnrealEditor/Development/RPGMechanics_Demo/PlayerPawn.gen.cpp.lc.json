@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\playerpawn.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\rpgmechanics_demoeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\development\\rpgmechanics_demo\\definitions.rpgmechanics_demo.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\source\\rpgmechanics_demo\\playerpawn.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\playerpawn.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

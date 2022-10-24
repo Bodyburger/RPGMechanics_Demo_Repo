@@ -62,7 +62,7 @@
 /DBUILD_VERSION=++UE5+Release-5.0-CL-20979098
 /DBUILD_ICON_FILE_NAME="\"..\\Build\\Windows\\Resources\\Default.ico\""
 /DPROJECT_COPYRIGHT_STRING="Fill out your copyright notice in the Description page of Project Settings."
-/DPROJECT_PRODUCT_NAME="Third Person Game Template"
+/DPROJECT_PRODUCT_NAME=RPGMechanics_Demo
 /DPROJECT_PRODUCT_IDENTIFIER=RPGMechanics_Demo
 /fo "D:\Unreal Projects\RPGMechanics_Demo_Repo\RPGMechanics_Demo\Intermediate\Build\Win64\UnrealEditor\Development\RPGMechanics_Demo\Default.rc2.res"
 "..\Build\Windows\Resources\Default.rc2"
