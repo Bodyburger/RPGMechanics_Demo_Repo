@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_Demo_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x47559449,
+				0x407B8893,
 				0x4D61F7E6,
 				METADATA_PARAMS(nullptr, 0)
 			};
@@ -25,5 +25,5 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_Demo_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_RPGMechanics_Demo.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_RPGMechanics_Demo(Z_Construct_UPackage__Script_RPGMechanics_Demo, TEXT("/Script/RPGMechanics_Demo"), Z_Registration_Info_UPackage__Script_RPGMechanics_Demo, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x47559449, 0x4D61F7E6));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_RPGMechanics_Demo(Z_Construct_UPackage__Script_RPGMechanics_Demo, TEXT("/Script/RPGMechanics_Demo"), Z_Registration_Info_UPackage__Script_RPGMechanics_Demo, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x407B8893, 0x4D61F7E6));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
