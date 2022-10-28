@@ -1,21 +1,11 @@
 [
 	{
-		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\PlayerPawn.cpp",
+		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\CameraCharacter.cpp",
 		"command": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\.vscode\\compileCommands_Default\\RPGMechanics_Demo.211.rsp\"",
 		"directory": "C:\\Program Files\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
 	{
-		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\PlayerPawn.h",
-		"command": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\.vscode\\compileCommands_Default\\RPGMechanics_Demo.211.rsp\"",
-		"directory": "C:\\Program Files\\Unreal Engine\\UE_5.0\\Engine\\Source"
-	},
-	{
-		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\RPGCameraManager.cpp",
-		"command": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\.vscode\\compileCommands_Default\\RPGMechanics_Demo.211.rsp\"",
-		"directory": "C:\\Program Files\\Unreal Engine\\UE_5.0\\Engine\\Source"
-	},
-	{
-		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\RPGCameraManager.h",
+		"file": "D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\CameraCharacter.h",
 		"command": "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\HostX64\\x64\\cl.exe\" @\"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\.vscode\\compileCommands_Default\\RPGMechanics_Demo.211.rsp\"",
 		"directory": "C:\\Program Files\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
