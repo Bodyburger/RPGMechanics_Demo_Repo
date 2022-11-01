@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_Demo_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xC7F4CA5A,
-				0xC3987E3C,
+				0xFEBA2897,
+				0xF3A0A196,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_RPGMechanics_Demo.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_RPGMechanics_Demo.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_RPGMechanics_Demo(Z_Construct_UPackage__Script_RPGMechanics_Demo, TEXT("/Script/RPGMechanics_Demo"), Z_Registration_Info_UPackage__Script_RPGMechanics_Demo, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xC7F4CA5A, 0xC3987E3C));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_RPGMechanics_Demo(Z_Construct_UPackage__Script_RPGMechanics_Demo, TEXT("/Script/RPGMechanics_Demo"), Z_Registration_Info_UPackage__Script_RPGMechanics_Demo, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xFEBA2897, 0xF3A0A196));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

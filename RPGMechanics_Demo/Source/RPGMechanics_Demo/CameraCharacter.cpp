@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Engine/World.h"
 
 // Sets default values
 ACameraCharacter::ACameraCharacter()
@@ -36,17 +37,32 @@ void ACameraCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
-void ACameraCharacter::SetCameraShoulderLocation()
-{
-	UE_LOG(LogTemp, Warning, TEXT("SetCameraShoulderLocation \"Commented out\". Causes a bug."));
-	// CameraComp->SetRelativeLocation(CameraRShoulderLocation->GetRelativeLocation());
-}
+// void ACameraCharacter::SetCameraShoulderLocation()
+// {
+// 	UE_LOG(LogTemp, Warning, TEXT("SetCameraShoulderLocation \"Commented out\". Causes a bug."));
+// 	// CameraComp->SetRelativeLocation(CameraRShoulderLocation->GetRelativeLocation());
+// }
 
-void ACameraCharacter::SetCameraOriginLocation()
-{
-	UE_LOG(LogTemp, Warning, TEXT("SetCameraOriginLocation \"Commented out\". Causes a bug."));
-	// CameraComp->SetRelativeLocation(CameraOriginLocation->GetRelativeLocation());
-}
+// void ACameraCharacter::SetCameraOriginLocation()
+// {
+// 	UE_LOG(LogTemp, Warning, TEXT("SetCameraOriginLocation \"Commented out\". Causes a bug."));
+// 	// CameraComp->SetRelativeLocation(CameraOriginLocation->GetRelativeLocation());
+// }
+
+// void ACameraCharacter::SelectCharacterWithMouse()
+// {
+// 	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+// 	if (PlayerController == nullptr)
+// 	{
+// 		UE_LOG(LogTemp, Warning, TEXT("SelectCharacterWithMouse()\n PlayerController == nullptr - > return"));
+// 		return;
+// 	}
+
+// 	FHitResult HitResult;
+// 	PlayerController->GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+// 	// Find out if a character was hit
+
+// }
 
 // Called every frame
 void ACameraCharacter::Tick(float DeltaTime)
@@ -59,8 +75,9 @@ void ACameraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ACameraCharacter::SetCameraShoulderLocation);
-	PlayerInputComponent->BindAction("SwitchCamera", IE_Released, this, &ACameraCharacter::SetCameraOriginLocation);
+	// PlayerInputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ACameraCharacter::SetCameraShoulderLocation);
+	// PlayerInputComponent->BindAction("SwitchCamera", IE_Released, this, &ACameraCharacter::SetCameraOriginLocation);
+	// PlayerInputComponent->BindAction("MouseSelect", IE_Pressed, this, &ACameraCharacter::SelectCharacterWithMouse);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ACameraCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACameraCharacter::MoveRight);

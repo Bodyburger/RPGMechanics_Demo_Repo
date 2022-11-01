@@ -16,4 +16,5 @@ class RPGMECHANICS_DEMO_API ARPGGameMode : public ARPGMechanics_DemoGameMode
 	
 protected:
 	virtual void BeginPlay() override;
+	
 };

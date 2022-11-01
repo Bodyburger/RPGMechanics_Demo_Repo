@@ -73,8 +73,10 @@ void EmptyLinkFunctionForGeneratedCodeCameraCharacter() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACameraCharacter_Statics::NewProp_CameraRShoulderLocation_MetaData[] = {
 		{ "Category", "CameraCharacter" },
+		{ "Comment", "// void SelectCharacterWithMouse();\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "CameraCharacter.h" },
+		{ "ToolTip", "void SelectCharacterWithMouse();" },
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACameraCharacter_Statics::NewProp_CameraRShoulderLocation = { "CameraRShoulderLocation", nullptr, (EPropertyFlags)0x002008000009000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACameraCharacter, CameraRShoulderLocation), Z_Construct_UClass_UArrowComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ACameraCharacter_Statics::NewProp_CameraRShoulderLocation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACameraCharacter_Statics::NewProp_CameraRShoulderLocation_MetaData)) };
@@ -160,9 +162,9 @@ void EmptyLinkFunctionForGeneratedCodeCameraCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_CameraCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ACameraCharacter, ACameraCharacter::StaticClass, TEXT("ACameraCharacter"), &Z_Registration_Info_UClass_ACameraCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACameraCharacter), 1234379568U) },
+		{ Z_Construct_UClass_ACameraCharacter, ACameraCharacter::StaticClass, TEXT("ACameraCharacter"), &Z_Registration_Info_UClass_ACameraCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACameraCharacter), 2865342559U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_CameraCharacter_h_833992515(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_CameraCharacter_h_266325363(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_CameraCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_CameraCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
