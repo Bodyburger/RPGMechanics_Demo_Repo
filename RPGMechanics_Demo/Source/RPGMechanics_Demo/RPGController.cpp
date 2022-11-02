@@ -6,18 +6,18 @@
 
 ARPGController::ARPGController()
 {
-    this->bShowMouseCursor = true;
+	this->bShowMouseCursor = true;
 }
 
 void ARPGController::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 
-    // HUD = CreateWidget(this, HUDClass);
-    // if (HUD != nullptr)
-    // {
-    //     HUD->AddToViewport();
-    // }
+	// HUD = CreateWidget(this, HUDClass);
+	// if (HUD != nullptr)
+	// {
+	//     HUD->AddToViewport();
+	// }
 }
 
 // Called to bind functionality to input
@@ -25,10 +25,9 @@ void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-    // UPDATE THESE !! 
-	// PlayerInputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ACameraCharacter::SetCameraShoulderLocation);
-	// PlayerInputComponent->BindAction("SwitchCamera", IE_Released, this, &ACameraCharacter::SetCameraOriginLocation);
-	// PlayerInputComponent->BindAction("MouseSelect", IE_Pressed, this, &ACameraCharacter::SelectCharacterWithMouse);
+	InputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ARPGController::SetCameraShoulderLocation);
+	InputComponent->BindAction("SwitchCamera", IE_Released, this, &ARPGController::SetCameraOriginLocation);
+	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectCharacterWithMouse);
 }
 void ARPGController::SetCameraShoulderLocation()
 {
@@ -45,8 +44,19 @@ void ARPGController::SetCameraOriginLocation()
 void ARPGController::SelectCharacterWithMouse()
 {
 	FHitResult HitResult;
-	this->GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
-	// TODO:
-    // Find out if a character was hit
+	FVector HitImpactVector;
+	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+	
+	HitImpactVector = HitResult.ImpactPoint;
+	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"), HitResult.ImpactPoint.X, HitResult.ImpactPoint.Y, HitResult.ImpactPoint.Z);
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 50.f, 12, FColor::Red);
 
+	if (HitResult.HasValidHitObjectHandle())
+	{
+		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"), *HitResult.GetActor()->GetActorNameOrLabel());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitResult.HasValidHitObjectHandle() returned false."));
+	}
 }
