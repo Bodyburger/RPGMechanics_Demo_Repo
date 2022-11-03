@@ -28,12 +28,10 @@ protected:
 	// Sets the CameraComp's relative location to CameraOriginLocation arrow component.
 	void SetCameraOriginLocation();
 
-	void SelectCharacterWithMouse();
+	void SelectObjectWithMouse();
 
 private:
-	// UPROPERTY(EditAnywhere)
-	// TSubclassOf<class UUserWidget> HUDClass;
+	UPROPERTY(VisibleAnywhere)
+	TArray<class ACharacter*> SelectedCharacters;
 
-	// UPROPERTY()
-	// UUserWidget* HUD;
 };

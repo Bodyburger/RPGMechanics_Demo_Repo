@@ -12,12 +12,6 @@ ARPGController::ARPGController()
 void ARPGController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// HUD = CreateWidget(this, HUDClass);
-	// if (HUD != nullptr)
-	// {
-	//     HUD->AddToViewport();
-	// }
 }
 
 // Called to bind functionality to input
@@ -27,7 +21,7 @@ void ARPGController::SetupInputComponent()
 
 	InputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ARPGController::SetCameraShoulderLocation);
 	InputComponent->BindAction("SwitchCamera", IE_Released, this, &ARPGController::SetCameraOriginLocation);
-	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectCharacterWithMouse);
+	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectObjectWithMouse);
 }
 void ARPGController::SetCameraShoulderLocation()
 {
@@ -41,7 +35,7 @@ void ARPGController::SetCameraOriginLocation()
 	// CameraComp->SetRelativeLocation(CameraOriginLocation->GetRelativeLocation());
 }
 
-void ARPGController::SelectCharacterWithMouse()
+void ARPGController::SelectObjectWithMouse()
 {
 	FHitResult HitResult;
 	FVector HitImpactVector;
@@ -54,6 +48,7 @@ void ARPGController::SelectCharacterWithMouse()
 	if (HitResult.HasValidHitObjectHandle())
 	{
 		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"), *HitResult.GetActor()->GetActorNameOrLabel());
+
 	}
 	else
 	{

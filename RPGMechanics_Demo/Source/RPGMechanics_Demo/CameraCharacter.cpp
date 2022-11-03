@@ -37,33 +37,6 @@ void ACameraCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
-// void ACameraCharacter::SetCameraShoulderLocation()
-// {
-// 	UE_LOG(LogTemp, Warning, TEXT("SetCameraShoulderLocation \"Commented out\". Causes a bug."));
-// 	// CameraComp->SetRelativeLocation(CameraRShoulderLocation->GetRelativeLocation());
-// }
-
-// void ACameraCharacter::SetCameraOriginLocation()
-// {
-// 	UE_LOG(LogTemp, Warning, TEXT("SetCameraOriginLocation \"Commented out\". Causes a bug."));
-// 	// CameraComp->SetRelativeLocation(CameraOriginLocation->GetRelativeLocation());
-// }
-
-// void ACameraCharacter::SelectCharacterWithMouse()
-// {
-// 	APlayerController* PlayerController = Cast<APlayerController>(GetController());
-// 	if (PlayerController == nullptr)
-// 	{
-// 		UE_LOG(LogTemp, Warning, TEXT("SelectCharacterWithMouse()\n PlayerController == nullptr - > return"));
-// 		return;
-// 	}
-
-// 	FHitResult HitResult;
-// 	PlayerController->GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
-// 	// Find out if a character was hit
-
-// }
-
 // Called every frame
 void ACameraCharacter::Tick(float DeltaTime)
 {
