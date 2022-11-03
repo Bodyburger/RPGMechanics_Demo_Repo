@@ -34,4 +34,8 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<class ACharacter*> SelectedCharacters;
 
+	void AddCharacterToArray(FHitResult& HitResult);
+
+	void EmptyCharacterArray();
+
 };

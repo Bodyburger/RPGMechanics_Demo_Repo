@@ -3,6 +3,8 @@
 
 #include "RPGController.h"
 #include "Blueprint/UserWidget.h"
+#include "GameFramework/Character.h"
+#include "DrawDebugHelpers.h"
 
 ARPGController::ARPGController()
 {
@@ -40,18 +42,62 @@ void ARPGController::SelectObjectWithMouse()
 	FHitResult HitResult;
 	FVector HitImpactVector;
 	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
-	
+
+
 	HitImpactVector = HitResult.ImpactPoint;
-	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"), HitResult.ImpactPoint.X, HitResult.ImpactPoint.Y, HitResult.ImpactPoint.Z);
-	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 50.f, 12, FColor::Red);
+	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"),
+									HitResult.ImpactPoint.X, 
+									HitResult.ImpactPoint.Y, 
+									HitResult.ImpactPoint.Z);
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Blue, false, 5);
 
 	if (HitResult.HasValidHitObjectHandle())
 	{
-		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"), *HitResult.GetActor()->GetActorNameOrLabel());
-
+		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"), 
+										*HitResult.GetActor()->GetActorNameOrLabel());
+		AddCharacterToArray(HitResult);
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitResult.HasValidHitObjectHandle() returned false."));
+		EmptyCharacterArray();
+	}
+}
+
+void ARPGController::AddCharacterToArray(FHitResult& HitResult)
+{
+	ACharacter* AddedCharacter = Cast<ACharacter>(HitResult.GetActor());
+	if (AddedCharacter)
+	{
+		SelectedCharacters.Add(AddedCharacter);
+
+		for (ACharacter* CharacterActor : SelectedCharacters)
+		{
+			FString CharacterName = CharacterActor->GetActorNameOrLabel();
+			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters: %s"), *CharacterName);
+		}
+	}
+
+}
+
+void ARPGController::EmptyCharacterArray()
+{
+	UE_LOG(LogTemp, Warning, 
+			TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters will be emptied."));
+
+	if (!SelectedCharacters.IsEmpty()) // Checking if empty already.
+	{
+		SelectedCharacters.Empty();
+		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after function call.
+		{
+			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters is empty."));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters is NOT empty after calling Empty()."));
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("SelectedCharacters was already empty."));
 	}
 }
