@@ -22,17 +22,13 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	// Sets the CameraComp's relative location to CameraRShoulderLocation arrow component.
-	void SetCameraShoulderLocation();
-
-	// Sets the CameraComp's relative location to CameraOriginLocation arrow component.
-	void SetCameraOriginLocation();
-
 	void SelectObjectWithMouse();
+
+	void OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray);
 
 private:
 	UPROPERTY(VisibleAnywhere)
-	TArray<class ACharacter*> SelectedCharacters;
+	TArray<ACharacter*> SelectedCharacters;
 
 	void AddCharacterToArray(FHitResult& HitResult);
 

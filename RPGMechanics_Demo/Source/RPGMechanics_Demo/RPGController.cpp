@@ -4,6 +4,7 @@
 #include "RPGController.h"
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "DrawDebugHelpers.h"
 
 ARPGController::ARPGController()
@@ -20,21 +21,8 @@ void ARPGController::BeginPlay()
 void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
-	InputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ARPGController::SetCameraShoulderLocation);
-	InputComponent->BindAction("SwitchCamera", IE_Released, this, &ARPGController::SetCameraOriginLocation);
+	
 	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectObjectWithMouse);
-}
-void ARPGController::SetCameraShoulderLocation()
-{
-	UE_LOG(LogTemp, Warning, TEXT("SetCameraShoulderLocation \"Commented out\". Causes a bug."));
-	// CameraComp->SetRelativeLocation(CameraRShoulderLocation->GetRelativeLocation());
-}
-
-void ARPGController::SetCameraOriginLocation()
-{
-	UE_LOG(LogTemp, Warning, TEXT("SetCameraOriginLocation \"Commented out\". Causes a bug."));
-	// CameraComp->SetRelativeLocation(CameraOriginLocation->GetRelativeLocation());
 }
 
 void ARPGController::SelectObjectWithMouse()
@@ -42,7 +30,6 @@ void ARPGController::SelectObjectWithMouse()
 	FHitResult HitResult;
 	FVector HitImpactVector;
 	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
-
 
 	HitImpactVector = HitResult.ImpactPoint;
 	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"),
@@ -60,6 +47,20 @@ void ARPGController::SelectObjectWithMouse()
 	else
 	{
 		EmptyCharacterArray();
+	}
+}
+
+void ARPGController::OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray)
+{
+	for (ACharacter* OrderedCharacter : CharacterArray)
+	{
+		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
+		if (MoveComp != nullptr)
+		{
+			// TODO: Order each character to move to a given location. 
+			// Remember to add a location parameter.
+			// MoveComp->
+		}
 	}
 }
 

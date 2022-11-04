@@ -12,16 +12,9 @@ ACameraCharacter::ACameraCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	CameraRShoulderLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("CameraRShoulderLocation"));
-	CameraOriginLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("CameraOriginLocation"));
+	
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComp"));
-
-	// CameraRShoulderLocation->SetupAttachment(RootComponent);
-	// CameraOriginLocation->SetupAttachment(RootComponent);
-	// CameraComp->SetupAttachment(GetMesh());
-
-	// Remove Mesh. Attach components to UCapsuleComponent.
 
 	SpringArmComp->SetupAttachment(RootComponent);
 	CameraComp->AttachToComponent(SpringArmComp, FAttachmentTransformRules::KeepRelativeTransform);
@@ -47,10 +40,6 @@ void ACameraCharacter::Tick(float DeltaTime)
 void ACameraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	// PlayerInputComponent->BindAction("SwitchCamera", IE_Pressed, this, &ACameraCharacter::SetCameraShoulderLocation);
-	// PlayerInputComponent->BindAction("SwitchCamera", IE_Released, this, &ACameraCharacter::SetCameraOriginLocation);
-	// PlayerInputComponent->BindAction("MouseSelect", IE_Pressed, this, &ACameraCharacter::SelectCharacterWithMouse);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ACameraCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACameraCharacter::MoveRight);

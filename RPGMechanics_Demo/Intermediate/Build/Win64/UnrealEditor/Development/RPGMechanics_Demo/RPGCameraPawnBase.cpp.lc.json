@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\source\\rpgmechanics_demo\\rpgcamerapawnbase.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\rpgmechanics_demoeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\development\\rpgmechanics_demo\\definitions.rpgmechanics_demo.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\source\\rpgmechanics_demo\\rpgcamerapawnbase.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\rpgcamerapawnbase.generated.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\springarmcomponent.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\springarmcomponent.generated.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\capsulecomponent.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\shapecomponent.generated.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\capsulecomponent.generated.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\camera\\cameracomponent.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\cameracomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
