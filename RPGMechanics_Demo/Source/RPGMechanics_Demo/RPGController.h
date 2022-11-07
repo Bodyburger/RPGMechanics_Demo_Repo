@@ -29,6 +29,8 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<ACharacter*> SelectedCharacters;
+	
+	class ARPGCameraPawnBase* CameraPawn;
 
 	void AddCharacterToArray(FHitResult& HitResult);
 

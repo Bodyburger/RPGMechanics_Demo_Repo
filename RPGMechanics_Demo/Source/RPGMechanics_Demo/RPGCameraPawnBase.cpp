@@ -24,16 +24,20 @@ ARPGCameraPawnBase::ARPGCameraPawnBase()
 	SpringArmComp->bEnableCameraLag = true;
 	SpringArmComp->bUsePawnControlRotation = true;
 	SpringArmComp->TargetArmLength = 0.f;
+
+	CameraComp->bUsePawnControlRotation = false;
 }
 
 // Called when the game starts or when spawned
 void ARPGCameraPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
-	// CameraRotation.Y = -70.f;
+	FRotator NewCameraRotation;
+	NewCameraRotation.Pitch = CameraRotation;
 
-	UE_LOG(LogTemp, Warning, TEXT("CameraRotation.Y: %f"), CameraRotation.Y);
-	CameraComp->SetWorldRotation(CameraRotation);
+	UE_LOG(LogTemp, Warning, TEXT("Camera pitch: %d"), CameraComp->GetRelativeRotation().Pitch);
+	CameraComp->AddLocalRotation(NewCameraRotation);
+	UE_LOG(LogTemp, Warning, TEXT("Camera pitch set to: %d"), CameraComp->GetRelativeRotation().Pitch);
 }
 
 // Called every frame
@@ -47,6 +51,8 @@ void ARPGCameraPawnBase::Tick(float DeltaTime)
 void ARPGCameraPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 
 }
 

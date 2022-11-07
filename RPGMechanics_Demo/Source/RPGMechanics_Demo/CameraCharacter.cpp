@@ -43,8 +43,6 @@ void ACameraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ACameraCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACameraCharacter::MoveRight);
-	// PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 }
 
 void ACameraCharacter::MoveForward(float AxisValue)

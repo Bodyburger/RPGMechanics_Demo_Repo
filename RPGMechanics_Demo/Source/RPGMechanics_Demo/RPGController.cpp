@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DrawDebugHelpers.h"
+#include "RPGCameraPawnBase.h"
 
 ARPGController::ARPGController()
 {
@@ -15,6 +16,8 @@ ARPGController::ARPGController()
 void ARPGController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	CameraPawn = Cast<ARPGCameraPawnBase>(GetPawn());
 }
 
 // Called to bind functionality to input

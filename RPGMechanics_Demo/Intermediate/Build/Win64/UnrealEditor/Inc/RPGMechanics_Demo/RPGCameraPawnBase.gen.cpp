@@ -13,7 +13,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 	RPGMECHANICS_DEMO_API UClass* Z_Construct_UClass_ARPGCameraPawnBase();
 	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_RPGMechanics_Demo();
-	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FQuat();
 	ENGINE_API UClass* Z_Construct_UClass_UCapsuleComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
@@ -33,10 +32,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_CameraRotation_MetaData[];
-#endif
-		static const UECodeGen_Private::FStructPropertyParams NewProp_CameraRotation;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CapsuleComp_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_CapsuleComp;
@@ -48,6 +43,10 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_SpringArmComp_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArmComp;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CameraRotation_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_CameraRotation;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -63,13 +62,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 		{ "ModuleRelativePath", "RPGCameraPawnBase.h" },
 	};
 #endif
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData[] = {
-		{ "Category", "RPGCameraPawnBase" },
-		{ "ModuleRelativePath", "RPGCameraPawnBase.h" },
-	};
-#endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation = { "CameraRotation", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGCameraPawnBase, CameraRotation), Z_Construct_UScriptStruct_FQuat, METADATA_PARAMS(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CapsuleComp_MetaData[] = {
 		{ "Category", "RPGCameraPawnBase" },
@@ -94,11 +86,18 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_SpringArmComp = { "SpringArmComp", nullptr, (EPropertyFlags)0x002008000009000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGCameraPawnBase, SpringArmComp), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_SpringArmComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_SpringArmComp_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData[] = {
+		{ "Category", "RPGCameraPawnBase" },
+		{ "ModuleRelativePath", "RPGCameraPawnBase.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation = { "CameraRotation", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGCameraPawnBase, CameraRotation), METADATA_PARAMS(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARPGCameraPawnBase_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CapsuleComp,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraComp,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_SpringArmComp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGCameraPawnBase_Statics::NewProp_CameraRotation,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ARPGCameraPawnBase_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ARPGCameraPawnBase>::IsAbstract,
@@ -136,9 +135,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGCameraPawnBase() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGCameraPawnBase_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGCameraPawnBase, ARPGCameraPawnBase::StaticClass, TEXT("ARPGCameraPawnBase"), &Z_Registration_Info_UClass_ARPGCameraPawnBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGCameraPawnBase), 2136694766U) },
+		{ Z_Construct_UClass_ARPGCameraPawnBase, ARPGCameraPawnBase::StaticClass, TEXT("ARPGCameraPawnBase"), &Z_Registration_Info_UClass_ARPGCameraPawnBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGCameraPawnBase), 1114851195U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGCameraPawnBase_h_3315289947(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGCameraPawnBase_h_3008861397(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGCameraPawnBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGCameraPawnBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
