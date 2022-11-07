@@ -80,6 +80,10 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters: %s"), *CharacterName);
 		}
 	}
+	else
+	{
+		EmptyCharacterArray();
+	}
 
 }
 

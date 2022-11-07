@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 	ENGINE_API UClass* Z_Construct_UClass_APlayerController();
 	UPackage* Z_Construct_UPackage__Script_RPGMechanics_Demo();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter_NoRegister();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void ARPGController::StaticRegisterNativesARPGController()
 	{
@@ -34,6 +35,10 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_SelectedCharacters_MetaData[];
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_SelectedCharacters;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MovementVelocity_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_MovementVelocity;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -58,9 +63,17 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters = { "SelectedCharacters", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGController, SelectedCharacters), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGController_Statics::NewProp_MovementVelocity_MetaData[] = {
+		{ "Category", "RPGController" },
+		{ "ModuleRelativePath", "RPGController.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARPGController_Statics::NewProp_MovementVelocity = { "MovementVelocity", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGController, MovementVelocity), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_ARPGController_Statics::NewProp_MovementVelocity_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGController_Statics::NewProp_MovementVelocity_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARPGController_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGController_Statics::NewProp_MovementVelocity,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ARPGController_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ARPGController>::IsAbstract,
@@ -98,9 +111,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 2533293651U) },
+		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 1869296681U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_1118435701(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_2214973591(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

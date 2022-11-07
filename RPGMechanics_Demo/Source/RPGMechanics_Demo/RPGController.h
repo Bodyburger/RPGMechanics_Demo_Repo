@@ -24,7 +24,7 @@ protected:
 
 	void SelectObjectWithMouse();
 
-	void OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray);
+	void OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray, FVector Location);
 
 private:
 	UPROPERTY(VisibleAnywhere)
@@ -36,4 +36,6 @@ private:
 
 	void EmptyCharacterArray();
 
+	UPROPERTY(VisibleAnywhere);
+	FVector MovementVelocity;
 };
