@@ -59,7 +59,7 @@ void ARPGController::OrderMoveWithMouse()
 {
 	TArray<ACharacter*> CharacterArray = SelectedCharacters;
 
-	if (CharacterArray.IsEmpty()) 
+	if (CharacterArray.IsEmpty())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("There are no ACharacters to move in CharacterArray"));
 		return;
@@ -73,19 +73,19 @@ void ARPGController::OrderMoveWithMouse()
 	for (ACharacter* OrderedCharacter : CharacterArray)
 	{
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
-		if (MoveComp != nullptr)
+		if (OrderedCharacter != nullptr && MoveComp != nullptr)
 		{
 			// TODO: Order each character to move to a given location. 
 			// Remember to add a location parameter.
-			// MoveComp-> 
-			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."), 
-				*HitResult.GetActor()->GetActorNameOrLabel());
-			
+			// MoveComp->
+			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
+				*OrderedCharacter->GetActorNameOrLabel());
+
 			MovementVelocity = OrderedCharacter->GetActorLocation() + HitResult.Location;
 			FStepDownResult OutStepDownResult;
 			MoveComp->MoveSmooth(MovementVelocity, UGameplayStatics::GetWorldDeltaSeconds(this), &OutStepDownResult);
-			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."), 
-				*HitResult.GetActor()->GetActorNameOrLabel());
+			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."),
+				*OrderedCharacter->GetActorNameOrLabel());
 		}
 		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp is nullptr.")); }
 	}
