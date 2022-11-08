@@ -2,11 +2,12 @@
 
 
 #include "RPGController.h"
-#include "Blueprint/UserWidget.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DrawDebugHelpers.h"
 #include "RPGCameraPawnBase.h"
+#include "Kismet/GameplayStatics.h"
+#include "Math/UnrealMathUtility.h"
 
 ARPGController::ARPGController()
 {
@@ -24,8 +25,9 @@ void ARPGController::BeginPlay()
 void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-	
-	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectObjectWithMouse);
+
+	InputComponent->BindAction("MouseSelect", IE_Released, this, &ARPGController::SelectObjectWithMouse);
+	InputComponent->BindAction("OrderMove", IE_Released, this, &ARPGController::OrderMoveWithMouse);
 }
 
 void ARPGController::SelectObjectWithMouse()
@@ -36,15 +38,15 @@ void ARPGController::SelectObjectWithMouse()
 
 	HitImpactVector = HitResult.ImpactPoint;
 	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"),
-									HitResult.ImpactPoint.X, 
-									HitResult.ImpactPoint.Y, 
-									HitResult.ImpactPoint.Z);
+		HitResult.ImpactPoint.X,
+		HitResult.ImpactPoint.Y,
+		HitResult.ImpactPoint.Z);
 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Blue, false, 5);
 
 	if (HitResult.HasValidHitObjectHandle())
 	{
-		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"), 
-										*HitResult.GetActor()->GetActorNameOrLabel());
+		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"),
+			*HitResult.GetActor()->GetActorNameOrLabel());
 		AddCharacterToArray(HitResult);
 	}
 	else
@@ -53,8 +55,21 @@ void ARPGController::SelectObjectWithMouse()
 	}
 }
 
-void ARPGController::OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray)
+void ARPGController::OrderMoveWithMouse()
 {
+	TArray<ACharacter*> CharacterArray = SelectedCharacters;
+
+	if (CharacterArray.IsEmpty()) 
+	{
+		UE_LOG(LogTemp, Warning, TEXT("There are no ACharacters to move in CharacterArray"));
+		return;
+	}
+
+	FHitResult HitResult;
+	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
+
 	for (ACharacter* OrderedCharacter : CharacterArray)
 	{
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
@@ -62,8 +77,17 @@ void ARPGController::OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray
 		{
 			// TODO: Order each character to move to a given location. 
 			// Remember to add a location parameter.
-			// MoveComp->
+			// MoveComp-> 
+			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."), 
+				*HitResult.GetActor()->GetActorNameOrLabel());
+			
+			MovementVelocity = OrderedCharacter->GetActorLocation() + HitResult.Location;
+			FStepDownResult OutStepDownResult;
+			MoveComp->MoveSmooth(MovementVelocity, UGameplayStatics::GetWorldDeltaSeconds(this), &OutStepDownResult);
+			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."), 
+				*HitResult.GetActor()->GetActorNameOrLabel());
 		}
+		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp is nullptr.")); }
 	}
 }
 
@@ -80,22 +104,18 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters: %s"), *CharacterName);
 		}
 	}
-	else
-	{
-		EmptyCharacterArray();
-	}
-
+	else { EmptyCharacterArray(); }
 }
 
 void ARPGController::EmptyCharacterArray()
 {
-	UE_LOG(LogTemp, Warning, 
-			TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters will be emptied."));
+	UE_LOG(LogTemp, Warning,
+		TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters will be emptied."));
 
 	if (!SelectedCharacters.IsEmpty()) // Checking if empty already.
 	{
 		SelectedCharacters.Empty();
-		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after function call.
+		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after Empty() function call.
 		{
 			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters is empty."));
 		}

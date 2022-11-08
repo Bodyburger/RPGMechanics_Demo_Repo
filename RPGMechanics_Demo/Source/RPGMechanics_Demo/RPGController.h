@@ -24,7 +24,7 @@ protected:
 
 	void SelectObjectWithMouse();
 
-	void OrderMoveWithMouse(TArray<class ACharacter*> CharacterArray, FVector Location);
+	void OrderMoveWithMouse();
 
 private:
 	UPROPERTY(VisibleAnywhere)
