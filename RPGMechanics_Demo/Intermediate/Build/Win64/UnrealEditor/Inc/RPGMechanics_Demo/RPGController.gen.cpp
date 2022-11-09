@@ -13,7 +13,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 	RPGMECHANICS_DEMO_API UClass* Z_Construct_UClass_ARPGController();
 	ENGINE_API UClass* Z_Construct_UClass_APlayerController();
 	UPackage* Z_Construct_UPackage__Script_RPGMechanics_Demo();
-	ENGINE_API UClass* Z_Construct_UClass_ACharacter_NoRegister();
+	RPGMECHANICS_DEMO_API UClass* Z_Construct_UClass_ARPGMechanics_DemoCharacter_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void ARPGController::StaticRegisterNativesARPGController()
@@ -55,7 +55,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 		{ "ModuleRelativePath", "RPGController.h" },
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_Inner = { "SelectedCharacters", nullptr, (EPropertyFlags)0x0000000000020000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_ACharacter_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_Inner = { "SelectedCharacters", nullptr, (EPropertyFlags)0x0000000000020000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_ARPGMechanics_DemoCharacter_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGController_Statics::NewProp_SelectedCharacters_MetaData[] = {
 		{ "Category", "RPGController" },
@@ -111,9 +111,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 1869296681U) },
+		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 4249097017U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_2214973591(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_1415453469(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

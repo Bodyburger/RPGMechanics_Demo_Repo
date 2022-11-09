@@ -2,7 +2,8 @@
 
 
 #include "RPGController.h"
-#include "GameFramework/Character.h"
+// #include "GameFramework/Character.h"
+#include "RPGMechanics_DemoCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DrawDebugHelpers.h"
 #include "RPGCameraPawnBase.h"
@@ -11,6 +12,8 @@
 
 ARPGController::ARPGController()
 {
+	// EMouseLockMode::LockAlways;
+
 	this->bShowMouseCursor = true;
 }
 
@@ -26,8 +29,8 @@ void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("MouseSelect", IE_Released, this, &ARPGController::SelectObjectWithMouse);
-	InputComponent->BindAction("OrderMove", IE_Released, this, &ARPGController::OrderMoveWithMouse);
+	// InputComponent->BindAction("MouseSelect", IE_Released, this, &ARPGController::SelectObjectWithMouse);
+	// InputComponent->BindAction("OrderMove", IE_Released, this, &ARPGController::OrderMoveWithMouse);
 }
 
 void ARPGController::SelectObjectWithMouse()
@@ -57,7 +60,7 @@ void ARPGController::SelectObjectWithMouse()
 
 void ARPGController::OrderMoveWithMouse()
 {
-	TArray<ACharacter*> CharacterArray = SelectedCharacters;
+	TArray<ARPGMechanics_DemoCharacter*> CharacterArray = SelectedCharacters;
 
 	if (CharacterArray.IsEmpty())
 	{
@@ -75,15 +78,15 @@ void ARPGController::OrderMoveWithMouse()
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
 		if (OrderedCharacter != nullptr && MoveComp != nullptr)
 		{
-			// TODO: Order each character to move to a given location. 
-			// Remember to add a location parameter.
-			// MoveComp->
 			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
 				*OrderedCharacter->GetActorNameOrLabel());
 
+			// TODO: Order each character to move to a given location.
+			// Rework this and try calling AddMovementInput() in RPGMechanics_DemoCharacter. 
 			MovementVelocity = OrderedCharacter->GetActorLocation() + HitResult.Location;
 			FStepDownResult OutStepDownResult;
 			MoveComp->MoveSmooth(MovementVelocity, UGameplayStatics::GetWorldDeltaSeconds(this), &OutStepDownResult);
+
 			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."),
 				*OrderedCharacter->GetActorNameOrLabel());
 		}
@@ -93,12 +96,12 @@ void ARPGController::OrderMoveWithMouse()
 
 void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 {
-	ACharacter* AddedCharacter = Cast<ACharacter>(HitResult.GetActor());
+	ARPGMechanics_DemoCharacter* AddedCharacter = Cast<ARPGMechanics_DemoCharacter>(HitResult.GetActor());
 	if (AddedCharacter)
 	{
 		SelectedCharacters.Add(AddedCharacter);
 
-		for (ACharacter* CharacterActor : SelectedCharacters)
+		for (ARPGMechanics_DemoCharacter* CharacterActor : SelectedCharacters)
 		{
 			FString CharacterName = CharacterActor->GetActorNameOrLabel();
 			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters: %s"), *CharacterName);
@@ -110,22 +113,22 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 void ARPGController::EmptyCharacterArray()
 {
 	UE_LOG(LogTemp, Warning,
-		TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters will be emptied."));
+		TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters array will be emptied."));
 
 	if (!SelectedCharacters.IsEmpty()) // Checking if empty already.
 	{
 		SelectedCharacters.Empty();
 		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after Empty() function call.
 		{
-			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters is empty."));
+			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters array is empty."));
 		}
 		else
 		{
-			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters is NOT empty after calling Empty()."));
+			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters array is NOT empty after calling Empty()."));
 		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Display, TEXT("SelectedCharacters was already empty."));
+		UE_LOG(LogTemp, Display, TEXT("Tried to empty SelectedCharacters array, but it was already empty."));
 	}
 }

@@ -28,7 +28,7 @@ protected:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-	TArray<ACharacter*> SelectedCharacters;
+	TArray<class ARPGMechanics_DemoCharacter*> SelectedCharacters;
 	
 	class ARPGCameraPawnBase* CameraPawn;
 
