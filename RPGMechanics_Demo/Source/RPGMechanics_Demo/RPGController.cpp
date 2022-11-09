@@ -14,7 +14,7 @@ ARPGController::ARPGController()
 {
 	// EMouseLockMode::LockAlways;
 
-	this->bShowMouseCursor = true;
+	// this->bShowMouseCursor = true;
 }
 
 void ARPGController::BeginPlay()
