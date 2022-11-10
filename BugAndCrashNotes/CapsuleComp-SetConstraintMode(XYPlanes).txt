@@ -1,0 +1,27 @@
+Fatal error!
+
+Unhandled Exception: EXCEPTION_ACCESS_VIOLATION reading address 0x0000000000000008
+
+0x00007ffc7a8929e4 UnrealEditor-PhysicsCore.dll!Chaos::TThreadedSingleParticlePhysicsProxyBase<1>::VerifyContext() [D:\build\++UE5\Sync\Engine\Source\Runtime\Experimental\Chaos\Public\PhysicsProxy\SingleParticlePhysicsProxy.h:883]
+0x00007ffc7a87b361 UnrealEditor-PhysicsCore.dll!FChaosEngineInterface::IsStatic() [D:\build\++UE5\Sync\Engine\Source\Runtime\PhysicsCore\Private\ChaosEngineInterface.cpp:376]
+0x00007ffc7a87aee9 UnrealEditor-PhysicsCore.dll!FChaosEngineInterface::IsDynamic() [D:\build\++UE5\Sync\Engine\Source\Runtime\PhysicsCore\Private\ChaosEngineInterface.cpp:371]
+0x00007ffc6116fec6 UnrealEditor-Engine.dll!FBodyInstance::CreateDOFLock() [D:\build\++UE5\Sync\Engine\Source\Runtime\Engine\Private\PhysicsEngine\BodyInstance.cpp:835]
+0x00007ffc6180a686 UnrealEditor-Engine.dll!UPrimitiveComponent::SetConstraintMode() [D:\build\++UE5\Sync\Engine\Source\Runtime\Engine\Private\PrimitiveComponentPhysics.cpp:117]
+0x00007ffc4833803e UnrealEditor-RPGMechanics_Demo.dll!ARPGCameraPawnBase::ARPGCameraPawnBase() [D:\Unreal Projects\RPGMechanics_Demo_Repo\RPGMechanics_Demo\Source\RPGMechanics_Demo\RPGCameraPawnBase.cpp:29]
+0x00007ffc80f8c44d UnrealEditor-CoreUObject.dll!UClass::CreateDefaultObject() [D:\build\++UE5\Sync\Engine\Source\Runtime\CoreUObject\Private\UObject\Class.cpp:3897]
+0x00007ffc812604dd UnrealEditor-CoreUObject.dll!UObjectLoadAllCompiledInDefaultProperties() [D:\build\++UE5\Sync\Engine\Source\Runtime\CoreUObject\Private\UObject\UObjectBase.cpp:836]
+0x00007ffc8124030b UnrealEditor-CoreUObject.dll!ProcessNewlyLoadedUObjects() [D:\build\++UE5\Sync\Engine\Source\Runtime\CoreUObject\Private\UObject\UObjectBase.cpp:920]
+0x00007ffc810f82a5 UnrealEditor-CoreUObject.dll!TBaseStaticDelegateInstance<void __cdecl(FName,bool),FDefaultDelegateUserPolicy>::ExecuteIfSafe() [D:\build\++UE5\Sync\Engine\Source\Runtime\Core\Public\Delegates\DelegateInstancesImpl.h:731]
+0x00007ffc7ce0a5c2 UnrealEditor-Core.dll!TMulticastDelegate<void __cdecl(FName,bool),FDefaultDelegateUserPolicy>::Broadcast() [D:\build\++UE5\Sync\Engine\Source\Runtime\Core\Public\Delegates\DelegateSignatureImpl.inl:967]
+0x00007ffc7ce2e937 UnrealEditor-Core.dll!FModuleManager::LoadModuleWithFailureReason() [D:\build\++UE5\Sync\Engine\Source\Runtime\Core\Private\Modules\ModuleManager.cpp:558]
+0x00007ffc879baaf6 UnrealEditor-Projects.dll!FModuleDescriptor::LoadModulesForPhase() [D:\build\++UE5\Sync\Engine\Source\Runtime\Projects\Private\ModuleDescriptor.cpp:690]
+0x00007ffc879bae31 UnrealEditor-Projects.dll!FProjectManager::LoadModulesForProject() [D:\build\++UE5\Sync\Engine\Source\Runtime\Projects\Private\ProjectManager.cpp:62]
+0x00007ff69f4353cb UnrealEditor.exe!FEngineLoop::LoadStartupModules() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\LaunchEngineLoop.cpp:4118]
+0x00007ff69f43866e UnrealEditor.exe!FEngineLoop::PreInitPostStartupScreen() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\LaunchEngineLoop.cpp:3469]
+0x00007ff69f430bbd UnrealEditor.exe!GuardedMain() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Launch.cpp:137]
+0x00007ff69f430e8a UnrealEditor.exe!GuardedMainWrapper() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:147]
+0x00007ff69f433c4d UnrealEditor.exe!LaunchWindowsStartup() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:283]
+0x00007ff69f445564 UnrealEditor.exe!WinMain() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:330]
+0x00007ff69f448736 UnrealEditor.exe!__scrt_common_main_seh() [d:\a01\_work\6\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288]
+0x00007ffcee987034 KERNEL32.DLL!UnknownFunction []
+0x00007ffcefe226a1 ntdll.dll!UnknownFunction []

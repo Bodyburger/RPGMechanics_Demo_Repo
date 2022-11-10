@@ -26,6 +26,7 @@ ARPGCameraPawnBase::ARPGCameraPawnBase()
 	SpringArmComp->TargetArmLength = 0.f;
 
 	CameraComp->bUsePawnControlRotation = false;
+
 }
 
 // Called when the game starts or when spawned
@@ -38,7 +39,10 @@ void ARPGCameraPawnBase::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("Camera pitch: %d"), CameraComp->GetRelativeRotation().Pitch);
 	CameraComp->AddLocalRotation(NewCameraRotation);
 	UE_LOG(LogTemp, Warning, TEXT("Camera pitch set to: %d"), CameraComp->GetRelativeRotation().Pitch);
+	
+	CapsuleComp->SetConstraintMode(EDOFMode::XYPlane);
 }
+
 
 // Called every frame
 void ARPGCameraPawnBase::Tick(float DeltaTime)
@@ -52,7 +56,18 @@ void ARPGCameraPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	// PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("Move Forward / Backward", this, &ARPGCameraPawnBase::MoveForward);
+	PlayerInputComponent->BindAxis("Move Left / Right", this, &ARPGCameraPawnBase::MoveRight);
 
 }
 
+void ARPGCameraPawnBase::MoveForward(float AxisValue)
+{
+	AddMovementInput(GetActorForwardVector(), AxisValue);
+}
+
+void ARPGCameraPawnBase::MoveRight(float AxisValue)
+{
+	AddMovementInput(GetActorRightVector(), AxisValue);
+}

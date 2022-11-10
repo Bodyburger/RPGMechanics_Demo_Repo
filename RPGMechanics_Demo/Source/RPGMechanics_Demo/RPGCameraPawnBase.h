@@ -38,4 +38,8 @@ protected:
 private:
 	UPROPERTY(EditAnywhere)
 	float CameraRotation = -70.f;
+
+	void MoveForward(float AxisValue);
+	
+	void MoveRight(float AxisValue);
 };
