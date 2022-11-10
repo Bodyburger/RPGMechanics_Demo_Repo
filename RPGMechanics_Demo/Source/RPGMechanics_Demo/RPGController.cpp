@@ -69,7 +69,9 @@ void ARPGController::OrderMoveWithMouse()
 	}
 
 	FHitResult HitResult;
+	FVector HitLocation = FVector::ZeroVector;
 	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+	HitLocation = HitResult.Location;
 
 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
 
@@ -83,9 +85,7 @@ void ARPGController::OrderMoveWithMouse()
 
 			// TODO: Order each character to move to a given location.
 			// Rework this and try calling AddMovementInput() in RPGMechanics_DemoCharacter. 
-			MovementVelocity = OrderedCharacter->GetActorLocation() + HitResult.Location;
-			FStepDownResult OutStepDownResult;
-			MoveComp->MoveSmooth(MovementVelocity, UGameplayStatics::GetWorldDeltaSeconds(this), &OutStepDownResult);
+
 
 			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."),
 				*OrderedCharacter->GetActorNameOrLabel());
