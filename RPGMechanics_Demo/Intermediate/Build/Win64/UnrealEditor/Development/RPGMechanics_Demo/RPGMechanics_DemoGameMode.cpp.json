@@ -19,7 +19,11 @@
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\rootmotionsource.generated.h",
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\character.generated.h",
-            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\rpgmechanics_democharacter.generated.h"
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\rpgmechanics_democharacter.generated.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\source\\rpgmechanics_demo\\rpgcamerapawnbase.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\rpgcamerapawnbase.generated.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\source\\rpgmechanics_demo\\rpgcontroller.h",
+            "d:\\unreal projects\\rpgmechanics_demo_repo\\rpgmechanics_demo\\intermediate\\build\\win64\\unrealeditor\\inc\\rpgmechanics_demo\\rpgcontroller.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
