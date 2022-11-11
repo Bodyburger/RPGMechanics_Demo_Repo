@@ -37,7 +37,9 @@
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementcomponentasync.generated.h",
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementcomponent.generated.h",
             "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\springarmcomponent.h",
-            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\springarmcomponent.generated.h"
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\springarmcomponent.generated.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\source\\runtime\\aimodule\\classes\\blueprint\\aiblueprinthelperlibrary.h",
+            "c:\\program files\\unreal engine\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\aimodule\\aiblueprinthelperlibrary.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

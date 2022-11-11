@@ -6,6 +6,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+
 
 //////////////////////////////////////////////////////////////////////////
 // ARPGMechanics_DemoCharacter
@@ -14,9 +16,6 @@ ARPGMechanics_DemoCharacter::ARPGMechanics_DemoCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
-
-	// set our turn rate for input
-	TurnRateGamepad = 50.f;
 
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
@@ -50,31 +49,48 @@ void ARPGMechanics_DemoCharacter::SetupPlayerInputComponent(class UInputComponen
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void ARPGMechanics_DemoCharacter::MoveForward(float Value)
+void ARPGMechanics_DemoCharacter::Tick(float DeltaTime)
 {
-	if ((Controller != nullptr) && (Value != 0.0f))
-	{
-		// find out which way is forward
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
+	Super::Tick(DeltaTime);
 
-		// get forward vector
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		AddMovementInput(Direction, Value);
+	if (bMoveInputPressed)
+	{
+		PressFollowTime += DeltaTime;
+		MoveOnTick();
+	}
+	else
+	{
+		PressFollowTime = 0.f;
 	}
 }
 
-void ARPGMechanics_DemoCharacter::MoveRight(float Value)
+void ARPGMechanics_DemoCharacter::MoveOnTick()
 {
-	if ((Controller != nullptr) && (Value != 0.0f))
+	if (GetController() != nullptr)
 	{
-		// find out which way is right
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
+		// TODO: Constant movement while input is being pressed
+		AddMovementInput(WorldDirection, 1.f, false);
+	}
+}
 
-		// get right vector 
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-		// add movement in that direction
-		AddMovementInput(Direction, Value);
+// Applies information sent by ARPGController to DemoCharacter's variables.
+void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
+{
+	if (GetController() != nullptr)
+	{
+		GetController()->StopMovement();
+		WorldDirection = (TargetLocation - GetActorLocation()).GetSafeNormal();
+		bMoveInputPressed = true;
+	}
+}
+
+void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
+{
+	if (GetController() != nullptr)
+	{
+		bMoveInputPressed = false;
+		GetController()->StopMovement();
+		// Errors for using the stuff below. 
+		// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), TargetLocation);
 	}
 }

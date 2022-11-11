@@ -2,19 +2,15 @@
 
 
 #include "RPGController.h"
-// #include "GameFramework/Character.h"
 #include "RPGMechanics_DemoCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DrawDebugHelpers.h"
 #include "RPGCameraPawnBase.h"
 #include "Kismet/GameplayStatics.h"
-#include "Math/UnrealMathUtility.h"
 
 ARPGController::ARPGController()
 {
-	// EMouseLockMode::LockAlways;
-
-	// this->bShowMouseCursor = true;
+	this->bShowMouseCursor = true;
 }
 
 void ARPGController::BeginPlay()
@@ -22,6 +18,8 @@ void ARPGController::BeginPlay()
 	Super::BeginPlay();
 
 	CameraPawn = Cast<ARPGCameraPawnBase>(GetPawn());
+
+	GetWorld()->GetGameViewport()->SetMouseLockMode(EMouseLockMode::LockAlways);
 }
 
 // Called to bind functionality to input
@@ -29,8 +27,32 @@ void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	// InputComponent->BindAction("MouseSelect", IE_Released, this, &ARPGController::SelectObjectWithMouse);
-	// InputComponent->BindAction("OrderMove", IE_Released, this, &ARPGController::OrderMoveWithMouse);
+	InputComponent->BindAction("MouseSelect", IE_Pressed, this, &ARPGController::SelectObjectWithMouse);
+	InputComponent->BindAction("OrderMovePressed", IE_Pressed, this, &ARPGController::OrderMoveInputPressed);
+	InputComponent->BindAction("OrderMoveReleased", IE_Released, this, &ARPGController::OrderMoveInputReleased);
+}
+
+// void ARPGController::PlayerTick(float DeltaTime)
+// {
+// 	Super::PlayerTick(DeltaTime);
+
+// 	if (bOrderInputIsPressed)
+// 	{
+// 		OrderMove();
+// 	}
+// 	else
+// }
+
+void ARPGController::OrderMoveInputPressed()
+{
+	bOrderInputIsPressed = true;
+	OrderMoveWhilePressed();
+}
+
+void ARPGController::OrderMoveInputReleased()
+{
+	bOrderInputIsPressed = false;
+	OrderMoveOnRelease();
 }
 
 void ARPGController::SelectObjectWithMouse()
@@ -58,13 +80,13 @@ void ARPGController::SelectObjectWithMouse()
 	}
 }
 
-void ARPGController::OrderMoveWithMouse()
+void ARPGController::OrderMoveWhilePressed()
 {
 	TArray<ARPGMechanics_DemoCharacter*> CharacterArray = SelectedCharacters;
 
 	if (CharacterArray.IsEmpty())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("There are no ACharacters to move in CharacterArray"));
+		UE_LOG(LogTemp, Warning, TEXT("There are no ARPGMechanics_DemoCharacter to move in CharacterArray"));
 		return;
 	}
 
@@ -75,7 +97,8 @@ void ARPGController::OrderMoveWithMouse()
 
 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
 
-	for (ACharacter* OrderedCharacter : CharacterArray)
+	// Check through every element in CharacterArary and call their public MoveOnTick()
+	for (ARPGMechanics_DemoCharacter* OrderedCharacter : CharacterArray)
 	{
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
 		if (OrderedCharacter != nullptr && MoveComp != nullptr)
@@ -83,14 +106,47 @@ void ARPGController::OrderMoveWithMouse()
 			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
 				*OrderedCharacter->GetActorNameOrLabel());
 
-			// TODO: Order each character to move to a given location.
-			// Rework this and try calling AddMovementInput() in RPGMechanics_DemoCharacter. 
+			OrderedCharacter->MoveInputPressed(HitLocation);
 
-
-			UE_LOG(LogTemp, Warning, TEXT("'%s' was moved."),
+			UE_LOG(LogTemp, Warning, TEXT("'%s's' MoveOnTick() was called."),
 				*OrderedCharacter->GetActorNameOrLabel());
 		}
-		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp is nullptr.")); }
+		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp or OrderedCharacter is nullptr.")); }
+	}
+}
+
+void ARPGController::OrderMoveOnRelease()
+{
+	TArray<ARPGMechanics_DemoCharacter*> CharacterArray = SelectedCharacters;
+
+	if (CharacterArray.IsEmpty())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("There are no ARPGMechanics_DemoCharacter to move in CharacterArray"));
+		return;
+	}
+
+	FHitResult HitResult;
+	FVector HitLocation = FVector::ZeroVector;
+	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+	HitLocation = HitResult.Location;
+
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
+
+	// Check through every element in CharacterArary and call their public MoveOnTick()
+	for (ARPGMechanics_DemoCharacter* OrderedCharacter : CharacterArray)
+	{
+		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
+		if (OrderedCharacter != nullptr && MoveComp != nullptr)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
+				*OrderedCharacter->GetActorNameOrLabel());
+
+			OrderedCharacter->MoveInputReleased(HitLocation);
+
+			UE_LOG(LogTemp, Warning, TEXT("'%s's' MoveOnTick() was called."),
+				*OrderedCharacter->GetActorNameOrLabel());
+		}
+		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp or OrderedCharacter is nullptr.")); }
 	}
 }
 

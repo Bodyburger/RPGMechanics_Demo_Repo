@@ -22,9 +22,17 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	// virtual void PlayerTick(float DeltaTime) override;
+
+	void OrderMoveInputPressed();
+
+	void OrderMoveInputReleased();
+
 	void SelectObjectWithMouse();
 
-	void OrderMoveWithMouse();
+	void OrderMoveWhilePressed();
+
+	void OrderMoveOnRelease();
 
 private:
 	UPROPERTY(VisibleAnywhere)
@@ -38,4 +46,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere);
 	FVector MovementVelocity;
+
+	UPROPERTY(VisibleAnywhere)
+	bool bOrderInputIsPressed = false;
 };

@@ -15,7 +15,6 @@ public:
 	// Sets default values for this pawn's properties
 	ARPGCameraPawnBase();
 
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
