@@ -66,31 +66,28 @@ void ARPGMechanics_DemoCharacter::Tick(float DeltaTime)
 
 void ARPGMechanics_DemoCharacter::MoveOnTick()
 {
-	if (GetController() != nullptr)
-	{
 		// TODO: Constant movement while input is being pressed
 		AddMovementInput(WorldDirection, 1.f, false);
-	}
 }
 
 // Applies information sent by ARPGController to DemoCharacter's variables.
 void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
 {
-	if (GetController() != nullptr)
-	{
-		GetController()->StopMovement();
-		WorldDirection = (TargetLocation - GetActorLocation()).GetSafeNormal();
-		bMoveInputPressed = true;
-	}
+	WorldDirection = (TargetLocation - GetActorLocation()).GetSafeNormal();
+	bMoveInputPressed = true;
 }
 
 void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 {
 	if (GetController() != nullptr)
 	{
-		bMoveInputPressed = false;
-		GetController()->StopMovement();
-		// Errors for using the stuff below. 
-		// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), TargetLocation);
+		if (PressFollowTime <= ShortPressThreshold)
+		{
+			bMoveInputPressed = false;
+			if (GetController() != nullptr) { GetController()->StopMovement(); }
+
+			// Errors for using the stuff below. 
+			// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), TargetLocation);
+		}
 	}
 }

@@ -32,21 +32,26 @@ void ARPGController::SetupInputComponent()
 	InputComponent->BindAction("OrderMoveReleased", IE_Released, this, &ARPGController::OrderMoveInputReleased);
 }
 
-// void ARPGController::PlayerTick(float DeltaTime)
-// {
-// 	Super::PlayerTick(DeltaTime);
+void ARPGController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
 
-// 	if (bOrderInputIsPressed)
-// 	{
-// 		OrderMove();
-// 	}
-// 	else
-// }
+	if (bOrderInputIsPressed)
+	{
+		OrderMoveWhilePressed();
+	}
+}
 
 void ARPGController::OrderMoveInputPressed()
 {
+	for (ARPGMechanics_DemoCharacter* SelectedCharacter : SelectedCharacters)
+	{
+		if (SelectedCharacter->GetController() != nullptr)
+		{
+			SelectedCharacter->GetController()->StopMovement();
+		}
+	}
 	bOrderInputIsPressed = true;
-	OrderMoveWhilePressed();
 }
 
 void ARPGController::OrderMoveInputReleased()
@@ -77,6 +82,8 @@ void ARPGController::SelectObjectWithMouse()
 	else
 	{
 		EmptyCharacterArray();
+		UE_LOG(LogTemp, Warning,
+			TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters array will be emptied."));
 	}
 }
 
@@ -155,7 +162,7 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 	ARPGMechanics_DemoCharacter* AddedCharacter = Cast<ARPGMechanics_DemoCharacter>(HitResult.GetActor());
 	if (AddedCharacter)
 	{
-		SelectedCharacters.Add(AddedCharacter);
+		SelectedCharacters.AddUnique(AddedCharacter);
 
 		for (ARPGMechanics_DemoCharacter* CharacterActor : SelectedCharacters)
 		{
@@ -163,15 +170,17 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters: %s"), *CharacterName);
 		}
 	}
-	else { EmptyCharacterArray(); }
+	else
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("AddedCharacter could not Cast into 'ARPGMechanics_DemoCharacter'. SelectedCharacters array will be emptied."));
+		EmptyCharacterArray();
+	}
 }
 
 void ARPGController::EmptyCharacterArray()
 {
-	UE_LOG(LogTemp, Warning,
-		TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters array will be emptied."));
-
-	if (!SelectedCharacters.IsEmpty()) // Checking if empty already.
+	if (!SelectedCharacters.IsEmpty()) // Checking if NOT empty.
 	{
 		SelectedCharacters.Empty();
 		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after Empty() function call.

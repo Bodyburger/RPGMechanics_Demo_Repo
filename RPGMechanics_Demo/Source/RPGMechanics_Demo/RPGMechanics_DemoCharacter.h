@@ -6,7 +6,7 @@
 #include "GameFramework/Character.h"
 #include "RPGMechanics_DemoCharacter.generated.h"
 
-UCLASS(config=Game)
+UCLASS(config = Game)
 class ARPGMechanics_DemoCharacter : public ACharacter
 {
 	GENERATED_BODY()
@@ -19,6 +19,9 @@ public:
 	void MoveInputPressed(FVector TargetLocation);
 
 	void MoveInputReleased(FVector TargetLocation);
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	float ShortPressThreshold = 0.3f;
 
 protected:
 	// APawn interface
