@@ -44,6 +44,9 @@ void ARPGCameraPawnBase::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("Camera pitch set to: %d"), CameraComp->GetRelativeRotation().Pitch);
 	
 	CapsuleComp->SetConstraintMode(EDOFMode::XYPlane);
+	CapsuleComp->SetGenerateOverlapEvents(true);
+	CapsuleComp->CanCharacterStepUpOn = ECanBeCharacterBase::ECB_No;
+	CapsuleComp->SetCollisionProfileName("InvisibleWallDynamic");
 }
 
 
