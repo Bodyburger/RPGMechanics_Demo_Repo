@@ -23,6 +23,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	float ShortPressThreshold = 0.3f;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FVector SimpleMoveGoal;
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -42,5 +44,6 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	float PressFollowTime;
+
 };
 

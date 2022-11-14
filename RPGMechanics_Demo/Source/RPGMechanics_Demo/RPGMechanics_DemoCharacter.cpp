@@ -5,6 +5,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
+#include "AIController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h" 
 
@@ -79,13 +80,15 @@ void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
 
 void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 {
+	// AAIController* AIController = Cast<AAIController>(GetController());
 	if (GetController() != nullptr)
 	{
 		if (PressFollowTime <= ShortPressThreshold)
 		{
-			GetController()->StopMovement();
 			// Errors for using the stuff below. 
-			// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), TargetLocation);
+			SimpleMoveGoal = TargetLocation;
+			// SimpleMoveGoal.Z = 0;
+			// UAIBlueprintHelperLibrary::SimpleMoveToLocation(AIController, SimpleMoveGoal);
 		}
 	}
 	bMoveInputPressed = false;

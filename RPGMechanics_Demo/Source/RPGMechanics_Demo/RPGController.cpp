@@ -115,6 +115,8 @@ void ARPGController::OrderMoveWhilePressed()
 
 void ARPGController::OrderMoveOnRelease()
 {
+	UE_LOG(LogTemp, Display, TEXT("OrderMoveOnRelease() called."));
+	
 	TArray<ARPGMechanics_DemoCharacter*> CharacterArray = SelectedCharacters;
 
 	if (CharacterArray.IsEmpty())
