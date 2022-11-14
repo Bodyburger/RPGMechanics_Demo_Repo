@@ -6,7 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h" 
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,7 +74,7 @@ void ARPGMechanics_DemoCharacter::MoveOnTick()
 void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
 {
 	WorldDirection = (TargetLocation - GetActorLocation()).GetSafeNormal();
-	bMoveInputPressed = true;
+	if (!bMoveInputPressed) { bMoveInputPressed = true; }
 }
 
 void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
@@ -83,8 +83,7 @@ void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 	{
 		if (PressFollowTime <= ShortPressThreshold)
 		{
-			if (GetController() != nullptr) { GetController()->StopMovement(); }
-
+			GetController()->StopMovement();
 			// Errors for using the stuff below. 
 			// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), TargetLocation);
 		}

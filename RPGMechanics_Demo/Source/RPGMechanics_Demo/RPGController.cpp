@@ -67,23 +67,20 @@ void ARPGController::SelectObjectWithMouse()
 	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
 
 	HitImpactVector = HitResult.ImpactPoint;
-	UE_LOG(LogTemp, Display, TEXT("HitResult.ImpactPoint: X: %f Y: %f Z: %f"),
-		HitResult.ImpactPoint.X,
-		HitResult.ImpactPoint.Y,
-		HitResult.ImpactPoint.Z);
-	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Blue, false, 5);
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 6, 6, FColor::Blue, false, 5);
 
 	if (HitResult.HasValidHitObjectHandle())
 	{
-		UE_LOG(LogTemp, Display, TEXT("HitResult.GetActor()->GetName(): %s"),
-			*HitResult.GetActor()->GetActorNameOrLabel());
 		AddCharacterToArray(HitResult);
 	}
 	else
 	{
-		EmptyCharacterArray();
-		UE_LOG(LogTemp, Warning,
-			TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters array will be emptied."));
+		if (!SelectedCharacters.IsEmpty())
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("HitResult.HasValidHitObjectHandle() returned false, SelectedCharacters array will be emptied."));
+			SelectedCharacters.Empty();
+		}
 	}
 }
 
@@ -99,7 +96,7 @@ void ARPGController::OrderMoveWhilePressed()
 
 	FHitResult HitResult;
 	FVector HitLocation = FVector::ZeroVector;
-	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+	APlayerController::GetHitResultUnderCursor(ECC_GameTraceChannel1, true, HitResult);
 	HitLocation = HitResult.Location;
 
 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
@@ -110,13 +107,7 @@ void ARPGController::OrderMoveWhilePressed()
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
 		if (OrderedCharacter != nullptr && MoveComp != nullptr)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
-				*OrderedCharacter->GetActorNameOrLabel());
-
 			OrderedCharacter->MoveInputPressed(HitLocation);
-
-			UE_LOG(LogTemp, Warning, TEXT("'%s's' MoveOnTick() was called."),
-				*OrderedCharacter->GetActorNameOrLabel());
 		}
 		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp or OrderedCharacter is nullptr.")); }
 	}
@@ -134,7 +125,7 @@ void ARPGController::OrderMoveOnRelease()
 
 	FHitResult HitResult;
 	FVector HitLocation = FVector::ZeroVector;
-	APlayerController::GetHitResultUnderCursor(ECC_Visibility, true, HitResult);
+	APlayerController::GetHitResultUnderCursor(ECC_GameTraceChannel1, true, HitResult);
 	HitLocation = HitResult.Location;
 
 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
@@ -145,13 +136,7 @@ void ARPGController::OrderMoveOnRelease()
 		UCharacterMovementComponent* MoveComp = OrderedCharacter->GetCharacterMovement();
 		if (OrderedCharacter != nullptr && MoveComp != nullptr)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Moving '%s' in CharacterArray."),
-				*OrderedCharacter->GetActorNameOrLabel());
-
 			OrderedCharacter->MoveInputReleased(HitLocation);
-
-			UE_LOG(LogTemp, Warning, TEXT("'%s's' MoveOnTick() was called."),
-				*OrderedCharacter->GetActorNameOrLabel());
 		}
 		else { UE_LOG(LogTemp, Warning, TEXT("MoveComp or OrderedCharacter is nullptr.")); }
 	}
@@ -172,28 +157,11 @@ void ARPGController::AddCharacterToArray(FHitResult& HitResult)
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning,
-			TEXT("AddedCharacter could not Cast into 'ARPGMechanics_DemoCharacter'. SelectedCharacters array will be emptied."));
-		EmptyCharacterArray();
-	}
-}
-
-void ARPGController::EmptyCharacterArray()
-{
-	if (!SelectedCharacters.IsEmpty()) // Checking if NOT empty.
-	{
-		SelectedCharacters.Empty();
-		if (SelectedCharacters.IsEmpty()) // Making sure TArray is empty after Empty() function call.
+		if (!SelectedCharacters.IsEmpty())
 		{
-			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters array is empty."));
+			UE_LOG(LogTemp, Warning,
+				TEXT("AddedCharacter could not Cast into 'ARPGMechanics_DemoCharacter'. SelectedCharacters array will be emptied."));
+			SelectedCharacters.Empty();
 		}
-		else
-		{
-			UE_LOG(LogTemp, Display, TEXT("SelectedCharacters array is NOT empty after calling Empty()."));
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Display, TEXT("Tried to empty SelectedCharacters array, but it was already empty."));
 	}
 }

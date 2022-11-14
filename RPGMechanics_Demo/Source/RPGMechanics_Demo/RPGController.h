@@ -42,8 +42,6 @@ private:
 
 	void AddCharacterToArray(FHitResult& HitResult);
 
-	void EmptyCharacterArray();
-
 	UPROPERTY(VisibleAnywhere);
 	FVector MovementVelocity;
 
