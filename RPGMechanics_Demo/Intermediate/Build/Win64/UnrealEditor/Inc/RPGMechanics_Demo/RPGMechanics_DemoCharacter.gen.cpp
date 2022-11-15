@@ -13,6 +13,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 	RPGMECHANICS_DEMO_API UClass* Z_Construct_UClass_ARPGMechanics_DemoCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_RPGMechanics_Demo();
+	NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void ARPGMechanics_DemoCharacter::StaticRegisterNativesARPGMechanics_DemoCharacter()
@@ -33,6 +34,10 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ShortPressThreshold_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_ShortPressThreshold;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FXMoveCommand_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FXMoveCommand;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_WorldDirection_MetaData[];
 #endif
@@ -74,6 +79,15 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold = { "ShortPressThreshold", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, ShortPressThreshold), METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_FXMoveCommand_MetaData[] = {
+		{ "Category", "Input" },
+		{ "Comment", "/** FX Class that we will spawn when commanding character to move. */" },
+		{ "ModuleRelativePath", "RPGMechanics_DemoCharacter.h" },
+		{ "ToolTip", "FX Class that we will spawn when commanding character to move." },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_FXMoveCommand = { "FXMoveCommand", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, FXMoveCommand), Z_Construct_UClass_UNiagaraSystem_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_FXMoveCommand_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_FXMoveCommand_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_WorldDirection_MetaData[] = {
 		{ "Category", "RPGMechanics_DemoCharacter" },
 		{ "ModuleRelativePath", "RPGMechanics_DemoCharacter.h" },
@@ -111,6 +125,7 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime = { "PressFollowTime", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, PressFollowTime), METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_FXMoveCommand,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_WorldDirection,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_bMoveInputPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_bMoveInputReleased,
@@ -152,9 +167,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGMechanics_DemoCharacter, ARPGMechanics_DemoCharacter::StaticClass, TEXT("ARPGMechanics_DemoCharacter"), &Z_Registration_Info_UClass_ARPGMechanics_DemoCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGMechanics_DemoCharacter), 1461396512U) },
+		{ Z_Construct_UClass_ARPGMechanics_DemoCharacter, ARPGMechanics_DemoCharacter::StaticClass, TEXT("ARPGMechanics_DemoCharacter"), &Z_Registration_Info_UClass_ARPGMechanics_DemoCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGMechanics_DemoCharacter), 3448688216U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_3630695160(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_794614478(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

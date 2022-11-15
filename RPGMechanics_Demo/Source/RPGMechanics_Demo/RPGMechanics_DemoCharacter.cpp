@@ -8,6 +8,9 @@
 #include "AIController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h" 
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraSystem.h"
+
 
 //////////////////////////////////////////////////////////////////////////
 // ARPGMechanics_DemoCharacter
@@ -85,7 +88,11 @@ void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 		if (PressFollowTime <= ShortPressThreshold)
 		{
 			FVector SimpleMoveGoal = TargetLocation;
-			// UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), SimpleMoveGoal);
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
+			 FXMoveCommand, SimpleMoveGoal,
+			  FRotator::ZeroRotator,
+			   FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true);
+			UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), SimpleMoveGoal);
 		}
 	}
 }

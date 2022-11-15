@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "RPGMechanics_DemoCharacter.generated.h"
 
+/** Forward declaration to improve compiling times */
+class UNiagaraSystem;
 
 UCLASS(config = Game)
 class ARPGMechanics_DemoCharacter : public ACharacter
@@ -23,6 +25,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	float ShortPressThreshold = 0.3f;
+
+	/** FX Class that we will spawn when commanding character to move. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	UNiagaraSystem* FXMoveCommand;
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
