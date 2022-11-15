@@ -82,17 +82,20 @@ void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
 
 void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 {
-	if (GetController() != nullptr)
+	AController* CharacterController = Cast<AController>(GetController());
+	
+	if (CharacterController != nullptr)
 	{
 		if (PressFollowTime <= ShortPressThreshold)
 		{
+			CharacterController->StopMovement();
 			bMoveInputPressed = false;
 			FVector SimpleMoveGoal = TargetLocation;
 			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
 				FXMoveCommand, SimpleMoveGoal,
 				FRotator::ZeroRotator,
 				FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true);
-			UAIBlueprintHelperLibrary::SimpleMoveToLocation(GetController(), SimpleMoveGoal);
+			UAIBlueprintHelperLibrary::SimpleMoveToLocation(CharacterController, SimpleMoveGoal);
 		}
 	}
 }
