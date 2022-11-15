@@ -99,8 +99,6 @@ void ARPGController::OrderMoveWhilePressed()
 	APlayerController::GetHitResultUnderCursor(ECC_GameTraceChannel1, true, HitResult);
 	HitLocation = HitResult.Location;
 
-	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, 5);
-
 	// Check through every element in CharacterArary and call their public MoveOnTick()
 	for (ARPGMechanics_DemoCharacter* OrderedCharacter : CharacterArray)
 	{

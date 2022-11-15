@@ -6,9 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "RPGController.generated.h"
 
-/**
- *
- */
+
 UCLASS()
 class RPGMECHANICS_DEMO_API ARPGController : public APlayerController
 {
@@ -18,6 +16,8 @@ public:
 	ARPGController();
 
 	virtual void SetupInputComponent() override;
+
+
 
 protected:
 	virtual void BeginPlay() override;
@@ -36,8 +36,8 @@ protected:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-	TArray<class ARPGMechanics_DemoCharacter*> SelectedCharacters;
-	
+		TArray<class ARPGMechanics_DemoCharacter*> SelectedCharacters;
+
 	class ARPGCameraPawnBase* CameraPawn;
 
 	void AddCharacterToArray(FHitResult& HitResult);
@@ -46,5 +46,5 @@ private:
 	FVector MovementVelocity;
 
 	UPROPERTY(VisibleAnywhere)
-	bool bOrderInputIsPressed = false;
+		bool bOrderInputIsPressed = false;
 };

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "RPGMechanics_DemoCharacter.generated.h"
 
+
 UCLASS(config = Game)
 class ARPGMechanics_DemoCharacter : public ACharacter
 {
@@ -22,9 +23,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	float ShortPressThreshold = 0.3f;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FVector SimpleMoveGoal;
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

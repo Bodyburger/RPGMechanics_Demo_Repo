@@ -34,10 +34,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_ShortPressThreshold;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_SimpleMoveGoal_MetaData[];
-#endif
-		static const UECodeGen_Private::FStructPropertyParams NewProp_SimpleMoveGoal;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_WorldDirection_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_WorldDirection;
@@ -78,13 +74,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold = { "ShortPressThreshold", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, ShortPressThreshold), METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_SimpleMoveGoal_MetaData[] = {
-		{ "Category", "RPGMechanics_DemoCharacter" },
-		{ "ModuleRelativePath", "RPGMechanics_DemoCharacter.h" },
-	};
-#endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_SimpleMoveGoal = { "SimpleMoveGoal", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, SimpleMoveGoal), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_SimpleMoveGoal_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_SimpleMoveGoal_MetaData)) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_WorldDirection_MetaData[] = {
 		{ "Category", "RPGMechanics_DemoCharacter" },
 		{ "ModuleRelativePath", "RPGMechanics_DemoCharacter.h" },
@@ -122,7 +111,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime = { "PressFollowTime", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARPGMechanics_DemoCharacter, PressFollowTime), METADATA_PARAMS(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_PressFollowTime_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_ShortPressThreshold,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_SimpleMoveGoal,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_WorldDirection,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_bMoveInputPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARPGMechanics_DemoCharacter_Statics::NewProp_bMoveInputReleased,
@@ -164,9 +152,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGMechanics_DemoCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGMechanics_DemoCharacter, ARPGMechanics_DemoCharacter::StaticClass, TEXT("ARPGMechanics_DemoCharacter"), &Z_Registration_Info_UClass_ARPGMechanics_DemoCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGMechanics_DemoCharacter), 2617281324U) },
+		{ Z_Construct_UClass_ARPGMechanics_DemoCharacter, ARPGMechanics_DemoCharacter::StaticClass, TEXT("ARPGMechanics_DemoCharacter"), &Z_Registration_Info_UClass_ARPGMechanics_DemoCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGMechanics_DemoCharacter), 1461396512U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_2519238296(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_3630695160(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGMechanics_DemoCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

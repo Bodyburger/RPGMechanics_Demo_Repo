@@ -54,7 +54,6 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARPGController_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n *\n */" },
 		{ "HideCategories", "Collision Rendering Transformation" },
 		{ "IncludePath", "RPGController.h" },
 		{ "ModuleRelativePath", "RPGController.h" },
@@ -128,9 +127,9 @@ void EmptyLinkFunctionForGeneratedCodeRPGController() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 4224035394U) },
+		{ Z_Construct_UClass_ARPGController, ARPGController::StaticClass, TEXT("ARPGController"), &Z_Registration_Info_UClass_ARPGController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARPGController), 3629014553U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_2835165349(TEXT("/Script/RPGMechanics_Demo"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_3520606935(TEXT("/Script/RPGMechanics_Demo"),
 		Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_RPGMechanics_Demo_Source_RPGMechanics_Demo_RPGController_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
