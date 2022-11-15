@@ -59,18 +59,13 @@ void ARPGMechanics_DemoCharacter::Tick(float DeltaTime)
 	if (bMoveInputPressed)
 	{
 		PressFollowTime += DeltaTime;
-		MoveOnTick();
+		// Constant movement while input is being pressed
+		AddMovementInput(WorldDirection, 1.f, false);
 	}
 	else
 	{
 		PressFollowTime = 0.f;
 	}
-}
-
-void ARPGMechanics_DemoCharacter::MoveOnTick()
-{
-	// TODO: Constant movement while input is being pressed
-	AddMovementInput(WorldDirection, 1.f, false);
 }
 
 // Applies information sent by ARPGController to DemoCharacter's variables.
@@ -82,20 +77,18 @@ void ARPGMechanics_DemoCharacter::MoveInputPressed(FVector TargetLocation)
 
 void ARPGMechanics_DemoCharacter::MoveInputReleased(FVector TargetLocation)
 {
-	AController* CharacterController = Cast<AController>(GetController());
-	
-	if (CharacterController != nullptr)
+	bMoveInputPressed = false;
+	if (PressFollowTime <= ShortPressThreshold)
 	{
-		if (PressFollowTime <= ShortPressThreshold)
+		if (Controller != nullptr)
 		{
-			CharacterController->StopMovement();
-			bMoveInputPressed = false;
 			FVector SimpleMoveGoal = TargetLocation;
+			
 			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
 				FXMoveCommand, SimpleMoveGoal,
 				FRotator::ZeroRotator,
 				FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true);
-			UAIBlueprintHelperLibrary::SimpleMoveToLocation(CharacterController, SimpleMoveGoal);
+			UAIBlueprintHelperLibrary::SimpleMoveToLocation(Controller, SimpleMoveGoal);
 		}
 	}
 }

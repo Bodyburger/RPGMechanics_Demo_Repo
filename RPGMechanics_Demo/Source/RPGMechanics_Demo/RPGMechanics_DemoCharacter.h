@@ -17,8 +17,6 @@ class ARPGMechanics_DemoCharacter : public ACharacter
 public:
 	ARPGMechanics_DemoCharacter();
 
-	void MoveOnTick();
-
 	void MoveInputPressed(FVector TargetLocation);
 
 	void MoveInputReleased(FVector TargetLocation);
