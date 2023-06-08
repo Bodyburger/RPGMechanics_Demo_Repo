@@ -41,6 +41,12 @@
 *.VC.db
 *.VC.opendb
 
+
+# Downloaded assets
+Content/ParagonGideon/*
+Content/ParagonSparrow/*
+Content/Characters/*
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
