@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo\\RPGMechanics_Demo.Build.cs",
-		"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_Demo.Target.cs",
-		"D:\\Unreal Projects\\RPGMechanics_Demo_Repo\\RPGMechanics_Demo\\Source\\RPGMechanics_DemoEditor.Target.cs"
-	],
-	"EngineVersion": "5.0.3"
-}
