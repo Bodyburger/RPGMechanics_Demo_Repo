@@ -1,13 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "CameraCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/ArrowComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Engine/World.h"
 
-// Sets default values
 ACameraCharacter::ACameraCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;

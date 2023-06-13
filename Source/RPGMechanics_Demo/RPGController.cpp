@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "RPGController.h"
 #include "RPGMechanics_DemoCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -22,7 +21,6 @@ void ARPGController::BeginPlay()
 	GetWorld()->GetGameViewport()->SetMouseLockMode(EMouseLockMode::LockAlways);
 }
 
-// Called to bind functionality to input
 void ARPGController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
