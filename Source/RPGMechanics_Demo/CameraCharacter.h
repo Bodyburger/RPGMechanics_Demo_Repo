@@ -12,20 +12,10 @@ class RPGMECHANICS_DEMO_API ACameraCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	ACameraCharacter();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	// // Sets the CameraComp's relative location to CameraRShoulderLocation arrow component.
-	// void SetCameraShoulderLocation();
-
-	// // Sets the CameraComp's relative location to CameraOriginLocation arrow component.
-	// void SetCameraOriginLocation();
-
-	// void SelectCharacterWithMouse();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	class UArrowComponent* CameraRShoulderLocation;
@@ -40,10 +30,8 @@ protected:
 	class USpringArmComponent* SpringArmComp;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:

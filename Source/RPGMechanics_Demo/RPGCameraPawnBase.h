@@ -12,17 +12,13 @@ class RPGMECHANICS_DEMO_API ARPGCameraPawnBase : public APawn
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
 	ARPGCameraPawnBase();
 
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 protected:
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)

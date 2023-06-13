@@ -10,7 +10,6 @@
 // Sets default values
 ACameraCharacter::ACameraCharacter()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
@@ -24,19 +23,16 @@ ACameraCharacter::ACameraCharacter()
 	SpringArmComp->TargetArmLength = 700.0f;
 }
 
-// Called when the game starts or when spawned
 void ACameraCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-// Called every frame
 void ACameraCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-// Called to bind functionality to input
 void ACameraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);

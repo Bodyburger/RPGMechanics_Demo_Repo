@@ -11,13 +11,8 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraSystem.h"
 
-
-//////////////////////////////////////////////////////////////////////////
-// ARPGMechanics_DemoCharacter
-
 ARPGMechanics_DemoCharacter::ARPGMechanics_DemoCharacter()
 {
-	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
 	// Don't rotate when the controller rotates. Let that just affect the camera.
@@ -29,25 +24,16 @@ ARPGMechanics_DemoCharacter::ARPGMechanics_DemoCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = true; // Rotate character to moving direction	
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 640.0f, 0.0f); // ...at this rotation rate
 
-	// Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
-	// instead of recompiling to adjust them
 	GetCharacterMovement()->AirControl = 0.35f;
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->bConstrainToPlane = true;
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
-
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
-
-//////////////////////////////////////////////////////////////////////////
-// Input
 
 void ARPGMechanics_DemoCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
-	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
